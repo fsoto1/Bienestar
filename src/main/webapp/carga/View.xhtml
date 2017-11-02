@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaViewDlg" widgetVar="CargaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCargaTitle}">
+            <h:form id="CargaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCargaLabel_id}"/>
+                        <h:outputText value="#{cargaController.selected.id}" title="#{bundle.ViewCargaTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_rut}"/>
+                        <h:outputText value="#{cargaController.selected.rut}" title="#{bundle.ViewCargaTitle_rut}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_nombres}"/>
+                        <h:outputText value="#{cargaController.selected.nombres}" title="#{bundle.ViewCargaTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_apellidos}"/>
+                        <h:outputText value="#{cargaController.selected.apellidos}" title="#{bundle.ViewCargaTitle_apellidos}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_nacimiento}"/>
+                        <h:outputText value="#{cargaController.selected.nacimiento}" title="#{bundle.ViewCargaTitle_nacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCargaLabel_genero}"/>
+                        <h:outputText value="#{cargaController.selected.genero}" title="#{bundle.ViewCargaTitle_genero}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_idEmpleado}"/>
+                        <h:outputText value="#{cargaController.selected.idEmpleado}" title="#{bundle.ViewCargaTitle_idEmpleado}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_idBonoEscolar}"/>
+                        <h:outputText value="#{cargaController.selected.idBonoEscolar}" title="#{bundle.ViewCargaTitle_idBonoEscolar}"/>
+                        <h:outputText value="#{bundle.ViewCargaLabel_idBonoNavidad}"/>
+                        <h:outputText value="#{cargaController.selected.idBonoNavidad}" title="#{bundle.ViewCargaTitle_idBonoNavidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CargaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

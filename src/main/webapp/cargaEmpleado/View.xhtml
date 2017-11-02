@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaEmpleadoViewDlg" widgetVar="CargaEmpleadoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCargaEmpleadoTitle}">
+            <h:form id="CargaEmpleadoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaEmpleadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCargaEmpleadoLabel_idEmpleado}"/>
+                        <h:outputText value="#{cargaEmpleadoController.selected.idEmpleado}" title="#{bundle.ViewCargaEmpleadoTitle_idEmpleado}"/>
+                        <h:outputText value="#{bundle.ViewCargaEmpleadoLabel_rutEmpleado}"/>
+                        <h:outputText value="#{cargaEmpleadoController.selected.rutEmpleado}" title="#{bundle.ViewCargaEmpleadoTitle_rutEmpleado}"/>
+                        <h:outputText value="#{bundle.ViewCargaEmpleadoLabel_departamento}"/>
+                        <h:outputText value="#{cargaEmpleadoController.selected.departamento}" title="#{bundle.ViewCargaEmpleadoTitle_departamento}"/>
+                        <h:outputText value="#{bundle.ViewCargaEmpleadoLabel_cantidadCargas}"/>
+                        <h:outputText value="#{cargaEmpleadoController.selected.cantidadCargas}" title="#{bundle.ViewCargaEmpleadoTitle_cantidadCargas}"/>
+                        <h:outputText value="#{bundle.ViewCargaEmpleadoLabel_bonoEscolar}"/>
+                        <h:outputText value="#{cargaEmpleadoController.selected.bonoEscolar}" title="#{bundle.ViewCargaEmpleadoTitle_bonoEscolar}"/>
+                        <h:outputText value="#{bundle.ViewCargaEmpleadoLabel_bonoNavidad}"/>
+                        <h:outputText value="#{cargaEmpleadoController.selected.bonoNavidad}" title="#{bundle.ViewCargaEmpleadoTitle_bonoNavidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CargaEmpleadoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

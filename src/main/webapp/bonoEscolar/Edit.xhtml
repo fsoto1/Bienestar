@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BonoEscolarEditDlg" widgetVar="BonoEscolarEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBonoEscolarTitle}">
+            <h:form id="BonoEscolarEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bonoEscolarController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBonoEscolarLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{bonoEscolarController.selected.id}" title="#{bundle.EditBonoEscolarTitle_id}" required="true" requiredMessage="#{bundle.EditBonoEscolarRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditBonoEscolarLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{bonoEscolarController.selected.nombre}" title="#{bundle.EditBonoEscolarTitle_nombre}" required="true" requiredMessage="#{bundle.EditBonoEscolarRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditBonoEscolarLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{bonoEscolarController.selected.monto}" title="#{bundle.EditBonoEscolarTitle_monto}" required="true" requiredMessage="#{bundle.EditBonoEscolarRequiredMessage_monto}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bonoEscolarController.update}" value="#{bundle.Save}" update="display,:BonoEscolarListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BonoEscolarEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BonoEscolarEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

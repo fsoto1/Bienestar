@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaEmpleadoCreateDlg" widgetVar="CargaEmpleadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCargaEmpleadoTitle}">
+            <h:form id="CargaEmpleadoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaEmpleadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_idEmpleado}" for="idEmpleado" />
+                        <p:inputText id="idEmpleado" value="#{cargaEmpleadoController.selected.idEmpleado}" title="#{bundle.CreateCargaEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.CreateCargaEmpleadoRequiredMessage_idEmpleado}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_rutEmpleado}" for="rutEmpleado" />
+                        <p:inputText id="rutEmpleado" value="#{cargaEmpleadoController.selected.rutEmpleado}" title="#{bundle.CreateCargaEmpleadoTitle_rutEmpleado}" required="true" requiredMessage="#{bundle.CreateCargaEmpleadoRequiredMessage_rutEmpleado}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_departamento}" for="departamento" />
+                        <p:inputText id="departamento" value="#{cargaEmpleadoController.selected.departamento}" title="#{bundle.CreateCargaEmpleadoTitle_departamento}" required="true" requiredMessage="#{bundle.CreateCargaEmpleadoRequiredMessage_departamento}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_cantidadCargas}" for="cantidadCargas" />
+                        <p:inputText id="cantidadCargas" value="#{cargaEmpleadoController.selected.cantidadCargas}" title="#{bundle.CreateCargaEmpleadoTitle_cantidadCargas}" required="true" requiredMessage="#{bundle.CreateCargaEmpleadoRequiredMessage_cantidadCargas}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_bonoEscolar}" for="bonoEscolar" />
+                        <p:inputText id="bonoEscolar" value="#{cargaEmpleadoController.selected.bonoEscolar}" title="#{bundle.CreateCargaEmpleadoTitle_bonoEscolar}" />
+                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_bonoNavidad}" for="bonoNavidad" />
+                        <p:inputText id="bonoNavidad" value="#{cargaEmpleadoController.selected.bonoNavidad}" title="#{bundle.CreateCargaEmpleadoTitle_bonoNavidad}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargaEmpleadoController.create}" value="#{bundle.Save}" update="display,:CargaEmpleadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CargaEmpleadoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargaEmpleadoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

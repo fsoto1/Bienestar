@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCargaEmpleadoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="CargaEmpleadoListForm">
+                <p:panel header="#{bundle.ListCargaEmpleadoTitle}">
+                    <p:dataTable id="datalist" value="#{cargaEmpleadoController.items}" var="item"
+                                 selectionMode="single" selection="#{cargaEmpleadoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idEmpleado}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaEmpleadoTitle_idEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpleado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaEmpleadoTitle_rutEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rutEmpleado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaEmpleadoTitle_departamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.departamento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaEmpleadoTitle_cantidadCargas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidadCargas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaEmpleadoTitle_bonoEscolar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bonoEscolar}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaEmpleadoTitle_bonoNavidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bonoNavidad}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cargaEmpleadoController.prepareCreate}" update=":CargaEmpleadoCreateForm" oncomplete="PF('CargaEmpleadoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CargaEmpleadoViewForm" oncomplete="PF('CargaEmpleadoViewDialog').show()" disabled="#{empty cargaEmpleadoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CargaEmpleadoEditForm" oncomplete="PF('CargaEmpleadoEditDialog').show()" disabled="#{empty cargaEmpleadoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cargaEmpleadoController.destroy}" update=":growl,datalist" disabled="#{empty cargaEmpleadoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>  
+                
+                <p:panel header="${bundle.ListCargaEmpleadoTitleDepa}">
+                    <p:dataTable id="datalist2" value="#{cargaEmpleadoController.departamentos}" var="item"
+                                 paginator="true"
+                                 rowKey="#{item[0]}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Departamentos_depa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item[0]}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Departamentos_be}"/>
+                            </f:facet>
+                            <h:outputText value="#{item[1]}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Departamentos_bn}"/>
+                            </f:facet>
+                            <h:outputText value="#{item[2]}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>  
+                <h:outputText value="${cargaEmpleadoController.totalBonosEscolar}"/>
+                <h:outputText value="${cargaEmpleadoController.totalBonosNavidad}"/>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>
