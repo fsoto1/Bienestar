@@ -198,7 +198,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return "cl.bienestarpf.modelo.entidades.Empleado[ id=" + id + " ]";
+        return "id: " + id + " nombre: " + nombres + " "+ apellidos;
     }
     
 }

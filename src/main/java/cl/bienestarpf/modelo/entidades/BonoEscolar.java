@@ -123,7 +123,7 @@ public class BonoEscolar implements Serializable {
 
     @Override
     public String toString() {
-        return "cl.bienestarpf.modelo.entidades.BonoEscolar[ id=" + id + " ]";
+        return  nombre ;
     }
     
 }

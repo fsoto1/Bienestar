@@ -24,9 +24,6 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCargaEmpleadoTitle_idEmpleado}"/>
@@ -55,23 +52,23 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCargaEmpleadoTitle_bonoEscolar}"/>
                             </f:facet>
-                            <h:outputText value="#{item.bonoEscolar}"/>
+                            <h:outputText value="$ #{item.bonoEscolar}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCargaEmpleadoTitle_bonoNavidad}"/>
                             </f:facet>
-                            <h:outputText value="#{item.bonoNavidad}"/>
+                            <h:outputText value="$ #{item.bonoNavidad}"/>
                         </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cargaEmpleadoController.prepareCreate}" update=":CargaEmpleadoCreateForm" oncomplete="PF('CargaEmpleadoCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CargaEmpleadoViewForm" oncomplete="PF('CargaEmpleadoViewDialog').show()" disabled="#{empty cargaEmpleadoController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CargaEmpleadoEditForm" oncomplete="PF('CargaEmpleadoEditDialog').show()" disabled="#{empty cargaEmpleadoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cargaEmpleadoController.destroy}" update=":growl,datalist" disabled="#{empty cargaEmpleadoController.selected}"/>
-                        </f:facet>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Total"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item.bonoEscolar + item.bonoNavidad}"/>
+                        </p:column>
                     </p:dataTable>
                 </p:panel>  
-                
+
                 <p:panel header="${bundle.ListCargaEmpleadoTitleDepa}">
                     <p:dataTable id="datalist2" value="#{cargaEmpleadoController.departamentos}" var="item"
                                  paginator="true"
@@ -90,18 +87,28 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.Departamentos_be}"/>
                             </f:facet>
-                            <h:outputText value="#{item[1]}"/>
+                            <h:outputText value="$ #{item[1]}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.Departamentos_bn}"/>
                             </f:facet>
-                            <h:outputText value="#{item[2]}"/>
+                            <h:outputText value="$ #{item[2]}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Total"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item[1] + item[2]}"/>
                         </p:column>
                     </p:dataTable>
                 </p:panel>  
-                <h:outputText value="${cargaEmpleadoController.totalBonosEscolar}"/>
-                <h:outputText value="${cargaEmpleadoController.totalBonosNavidad}"/>
+                <h3>Total bono escolar</h3>
+                <h3>$ ${cargaEmpleadoController.totalBonosEscolar}</h3>
+                <h3>Total bono navidad</h3>
+                <h3>$ ${cargaEmpleadoController.totalBonosNavidad}</h3>
+                <h3>Total bonos</h3>
+                <h3>$ ${cargaEmpleadoController.totalBonosNavidad + cargaEmpleadoController.totalBonosEscolar}</h3>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

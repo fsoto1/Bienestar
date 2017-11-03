@@ -12,8 +12,6 @@
             <h:form id="BonoEscolarCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{bonoEscolarController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateBonoEscolarLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{bonoEscolarController.selected.id}" title="#{bundle.CreateBonoEscolarTitle_id}" required="true" requiredMessage="#{bundle.CreateBonoEscolarRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateBonoEscolarLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{bonoEscolarController.selected.nombre}" title="#{bundle.CreateBonoEscolarTitle_nombre}" required="true" requiredMessage="#{bundle.CreateBonoEscolarRequiredMessage_nombre}"/>
                         <p:outputLabel value="#{bundle.CreateBonoEscolarLabel_monto}" for="monto" />

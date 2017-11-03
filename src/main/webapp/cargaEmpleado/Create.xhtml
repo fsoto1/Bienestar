@@ -12,8 +12,6 @@
             <h:form id="CargaEmpleadoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargaEmpleadoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_idEmpleado}" for="idEmpleado" />
-                        <p:inputText id="idEmpleado" value="#{cargaEmpleadoController.selected.idEmpleado}" title="#{bundle.CreateCargaEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.CreateCargaEmpleadoRequiredMessage_idEmpleado}"/>
                         <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_rutEmpleado}" for="rutEmpleado" />
                         <p:inputText id="rutEmpleado" value="#{cargaEmpleadoController.selected.rutEmpleado}" title="#{bundle.CreateCargaEmpleadoTitle_rutEmpleado}" required="true" requiredMessage="#{bundle.CreateCargaEmpleadoRequiredMessage_rutEmpleado}"/>
                         <p:outputLabel value="#{bundle.CreateCargaEmpleadoLabel_departamento}" for="departamento" />

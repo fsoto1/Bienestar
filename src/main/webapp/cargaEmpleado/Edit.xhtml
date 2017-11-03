@@ -12,8 +12,6 @@
             <h:form id="CargaEmpleadoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargaEmpleadoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCargaEmpleadoLabel_idEmpleado}" for="idEmpleado" />
-                        <p:inputText id="idEmpleado" value="#{cargaEmpleadoController.selected.idEmpleado}" title="#{bundle.EditCargaEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.EditCargaEmpleadoRequiredMessage_idEmpleado}"/>
                         <p:outputLabel value="#{bundle.EditCargaEmpleadoLabel_rutEmpleado}" for="rutEmpleado" />
                         <p:inputText id="rutEmpleado" value="#{cargaEmpleadoController.selected.rutEmpleado}" title="#{bundle.EditCargaEmpleadoTitle_rutEmpleado}" required="true" requiredMessage="#{bundle.EditCargaEmpleadoRequiredMessage_rutEmpleado}"/>
                         <p:outputLabel value="#{bundle.EditCargaEmpleadoLabel_departamento}" for="departamento" />

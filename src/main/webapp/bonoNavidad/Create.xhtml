@@ -12,8 +12,6 @@
             <h:form id="BonoNavidadCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{bonoNavidadController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateBonoNavidadLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{bonoNavidadController.selected.id}" title="#{bundle.CreateBonoNavidadTitle_id}" required="true" requiredMessage="#{bundle.CreateBonoNavidadRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateBonoNavidadLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{bonoNavidadController.selected.nombre}" title="#{bundle.CreateBonoNavidadTitle_nombre}" required="true" requiredMessage="#{bundle.CreateBonoNavidadRequiredMessage_nombre}"/>
                         <p:outputLabel value="#{bundle.CreateBonoNavidadLabel_monto}" for="monto" />

@@ -12,8 +12,6 @@
             <h:form id="CargaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCargaLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{cargaController.selected.id}" title="#{bundle.EditCargaTitle_id}" required="true" requiredMessage="#{bundle.EditCargaRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditCargaLabel_rut}" for="rut" />
                         <p:inputText id="rut" value="#{cargaController.selected.rut}" title="#{bundle.EditCargaTitle_rut}" required="true" requiredMessage="#{bundle.EditCargaRequiredMessage_rut}"/>
                         <p:outputLabel value="#{bundle.EditCargaLabel_nombres}" for="nombres" />
